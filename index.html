@@ -23,6 +23,8 @@
 <!-- ========== NAVBAR ========== -->
 <nav class="navbar" id="navbar">
     <div class="nav-container">
+
+        <!-- ── Logo ── -->
         <a href="#home" class="logo">
             <div class="logo-icon">
                 <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
@@ -39,71 +41,169 @@
             </div>
             <span class="logo-text">Solar<span>sol</span></span>
         </a>
+
+        <!-- ── Desktop + mobile nav links ── -->
         <ul class="nav-links" id="navLinks">
-            <li class="nav-item"><a href="#about"        class="nav-link">About</a></li>
-            <li class="nav-item"><a href="#services"     class="nav-link">Services</a></li>
-            <li class="nav-item"><a href="#why-us"       class="nav-link">Why Us</a></li>
-            <li class="nav-item"><a href="#projects"     class="nav-link">Projects</a></li>
-            <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
-            <li class="nav-item"><a href="#contact" class="nav-cta">Get Started</a></li>
+            <li><a href="#about"        class="nav-link">About</a></li>
+            <li><a href="#services"     class="nav-link">Services</a></li>
+            <li><a href="#why-us"       class="nav-link">Why Us</a></li>
+            <li><a href="#projects"     class="nav-link">Projects</a></li>
+            <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+            <!-- Shown only inside mobile slide-in panel -->
+            <li class="nav-mob-cta">
+                <a href="#contact" class="nav-cta">Get Started</a>
+            </li>
         </ul>
-        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-        </button>
+
+        <!-- ── Right side: desktop CTA + hamburger ── -->
+        <div class="nav-actions">
+            <a href="#contact" class="nav-cta nav-cta-desk">
+                Get Started
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <button class="hamburger" id="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
     </div>
 </nav>
+
+<!-- Mobile menu backdrop (click to close) -->
+<div class="nav-backdrop" id="navBackdrop"></div>
 
 <!-- ========== HERO ========== -->
 <!-- Hero uses built-in CSS keyframe animations — no AOS needed above the fold -->
 <section class="hero" id="home">
+
+    <!-- ── Background image + overlay ── -->
     <div class="hero-bg">
-        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1920&q=80" alt="Solar panels at sunrise" class="hero-bg-img">
+        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1920&q=80"
+             alt="Solar panels at sunrise" class="hero-bg-img">
         <div class="hero-overlay"></div>
     </div>
+
+    <!-- Decorative ambient orbs -->
+    <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+
+    <!-- ── Two-column content grid ── -->
     <div class="hero-container">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <span class="badge-dot"></span>
-                <span>Sustainable Energy Solutions</span>
-            </div>
-            <h1 class="hero-title">
-                Powering the Future<br>
-                with <span class="hero-accent">Smart Solar</span><br>
-                Solutions
-            </h1>
-            <p class="hero-subtitle">
-                Harness the limitless power of the sun with our premium solar energy systems.
-                Reliable, efficient, and engineered for long-term sustainability.
-            </p>
-            <div class="hero-btns d-flex flex-wrap gap-3 mb-5">
-                <a href="#contact" class="btn btn-primary btn-lg">
-                    Get a Free Consultation
-                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                </a>
-                <a href="#services" class="btn btn-outline btn-lg">Our Services</a>
-            </div>
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <span class="stat-num">500+</span>
-                    <span class="stat-lbl">Projects Completed</span>
+        <div class="hero-grid">
+
+            <!-- ── Left: Copy ── -->
+            <div class="hero-content">
+
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>Nigeria's Premier Solar Company</span>
+                    <span class="badge-year">Est. 2014</span>
                 </div>
-                <div class="stat-line"></div>
-                <div class="hero-stat">
-                    <span class="stat-num">10+</span>
-                    <span class="stat-lbl">Years Experience</span>
+
+                <h1 class="hero-title">
+                    Powering the<br>
+                    <span class="hero-accent">Future</span> with<br>
+                    Smart Solar
+                </h1>
+
+                <p class="hero-subtitle">
+                    Harness the limitless power of the sun with premium solar systems
+                    engineered for reliability, efficiency, and long-term sustainability.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary btn-lg">
+                        Get Free Consultation
+                        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </a>
+                    <a href="#services" class="hero-ghost-btn">
+                        <span class="ghost-play">
+                            <svg width="10" height="12" viewBox="0 0 10 12" fill="none" aria-hidden="true">
+                                <path d="M1 1.5l7.5 4.5L1 10.5V1.5z" fill="currentColor" stroke="currentColor" stroke-width=".5" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        Explore Services
+                    </a>
                 </div>
-                <div class="stat-line"></div>
-                <div class="hero-stat">
-                    <span class="stat-num">98%</span>
-                    <span class="stat-lbl">Client Satisfaction</span>
+
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="stat-num">500+</span>
+                        <span class="stat-lbl">Projects Completed</span>
+                    </div>
+                    <div class="stat-line"></div>
+                    <div class="hero-stat">
+                        <span class="stat-num">10+</span>
+                        <span class="stat-lbl">Years of Excellence</span>
+                    </div>
+                    <div class="stat-line"></div>
+                    <div class="hero-stat">
+                        <span class="stat-num">50MW</span>
+                        <span class="stat-lbl">Capacity Installed</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ── Right: Visual card ── -->
+            <div class="hero-visual" aria-hidden="true">
+
+                <!-- Decorative rings behind image -->
+                <div class="h-ring h-ring-1"></div>
+                <div class="h-ring h-ring-2"></div>
+
+                <div class="hero-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=900&q=80"
+                         alt="" class="hero-img" loading="eager">
+
+                    <!-- Floating: Efficiency metric (top-left) -->
+                    <div class="h-float h-float-tl">
+                        <div class="h-float-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                            </svg>
+                        </div>
+                        <div class="h-float-body">
+                            <strong>98.5%</strong>
+                            <span>System Efficiency</span>
+                        </div>
+                    </div>
+
+                    <!-- Floating: CO₂ saved (bottom-right) -->
+                    <div class="h-float h-float-br">
+                        <div class="h-float-icon h-float-icon-green">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M12 22c6-3.5 8-9 8-14 0 0-4-1-8 3-4-4-8-3-8-3 0 5 2 10.5 8 14z"/>
+                            </svg>
+                        </div>
+                        <div class="h-float-body">
+                            <strong>2.4T CO₂</strong>
+                            <span>Saved Per Year</span>
+                        </div>
+                    </div>
+
+                    <!-- Live-status pill -->
+                    <div class="h-live-badge">
+                        <span class="h-live-dot"></span>
+                        <span>Live Monitoring</span>
+                    </div>
+
                 </div>
             </div>
+
         </div>
     </div>
+
+    <!-- Scroll cue -->
     <div class="scroll-hint" aria-hidden="true">
         <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
         <span>Scroll to explore</span>
     </div>
+
 </section>
 
 <!-- ========== ABOUT ========== -->

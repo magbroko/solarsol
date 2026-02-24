@@ -12,64 +12,94 @@
     /* ================================================
        NAVBAR — scroll style + mobile toggle
     ================================================ */
-    var navbar    = document.getElementById('navbar');
-    var hamburger = document.getElementById('hamburger');
-    var navLinks  = document.getElementById('navLinks');
-    var backTop   = document.getElementById('backTop');
-    var scrollHint = document.querySelector('.scroll-hint');
+    var navbar      = document.getElementById('navbar');
+    var hamburger   = document.getElementById('hamburger');
+    var navLinks    = document.getElementById('navLinks');
+    var navBackdrop = document.getElementById('navBackdrop');
+    var backTop     = document.getElementById('backTop');
+    var scrollHint  = document.querySelector('.scroll-hint');
 
-    function handleScroll() {
-        var y = window.pageYOffset || document.documentElement.scrollTop;
+    // Declared here so handleScroll → updateActiveLink can use them safely
+    // (if declared later, var-hoisting leaves them undefined when handleScroll
+    //  is called immediately, causing a TypeError that aborts the whole IIFE)
+    var sections   = document.querySelectorAll('section[id]');
+    var navAnchors = document.querySelectorAll('.nav-link');
 
-        // Sticky style
-        if (y > 60) { navbar.classList.add('scrolled'); }
-        else         { navbar.classList.remove('scrolled'); }
+    // Guard: if core nav elements are missing, skip all nav logic
+    if (!navbar || !hamburger || !navLinks) {
+        console.warn('Solarsol: navbar elements not found.');
+    } else {
 
-        // Back-to-top
-        if (backTop) {
-            if (y > 400) { backTop.classList.add('show'); }
-            else          { backTop.classList.remove('show'); }
+        /* ── Scroll handler ── */
+        function handleScroll() {
+            var y = window.pageYOffset || document.documentElement.scrollTop;
+
+            navbar.classList.toggle('scrolled', y > 60);
+
+            if (backTop)     backTop.classList.toggle('show',   y > 400);
+            if (scrollHint)  scrollHint.classList.toggle('hidden', y > 100);
+
+            updateActiveLink(y);
         }
 
-        // Hide scroll hint after user scrolls
-        if (scrollHint) {
-            if (y > 100) { scrollHint.classList.add('hidden'); }
-            else          { scrollHint.classList.remove('hidden'); }
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll(); // run once on load
+
+        /* ── Open / close helpers ── */
+        function openMenu() {
+            hamburger.classList.add('open');
+            hamburger.setAttribute('aria-expanded', 'true');
+            navLinks.classList.add('open');
+            if (navBackdrop) navBackdrop.classList.add('show');
+            document.body.style.overflow = 'hidden';
         }
 
-        // Active nav link
-        updateActiveLink(y);
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-
-    // Mobile hamburger
-    hamburger.addEventListener('click', function (e) {
-        e.stopPropagation();
-        var open = hamburger.classList.toggle('open');
-        navLinks.classList.toggle('open', open);
-        document.body.style.overflow = open ? 'hidden' : '';
-    });
-
-    function closeMenu() {
-        hamburger.classList.remove('open');
-        navLinks.classList.remove('open');
-        document.body.style.overflow = '';
-    }
-
-    // Close on nav link click
-    var allNavLinks = navLinks.querySelectorAll('a');
-    allNavLinks.forEach(function (a) { a.addEventListener('click', closeMenu); });
-
-    // Close on outside click
-    document.addEventListener('click', function (e) {
-        if (navLinks.classList.contains('open') &&
-            !navLinks.contains(e.target) &&
-            !hamburger.contains(e.target)) {
-            closeMenu();
+        function closeMenu() {
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            navLinks.classList.remove('open');
+            if (navBackdrop) navBackdrop.classList.remove('show');
+            document.body.style.overflow = '';
         }
-    });
+
+        /* ── Hamburger click ── */
+        hamburger.addEventListener('click', function (e) {
+            e.stopPropagation();
+            if (navLinks.classList.contains('open')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        /* ── Backdrop click ── */
+        if (navBackdrop) {
+            navBackdrop.addEventListener('click', closeMenu);
+        }
+
+        /* ── Close when a nav link is tapped ── */
+        navLinks.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', closeMenu);
+        });
+
+        /* ── Close on any outside click (keyboard / mouse) ── */
+        document.addEventListener('click', function (e) {
+            if (navLinks.classList.contains('open') &&
+                !navLinks.contains(e.target) &&
+                !hamburger.contains(e.target)) {
+                closeMenu();
+            }
+        });
+
+        /* ── Close with Escape key ── */
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+                closeMenu();
+                hamburger.focus();
+            }
+        });
+
+    } // end nav guard
 
     /* ================================================
        SMOOTH SCROLL
@@ -95,9 +125,6 @@
     /* ================================================
        ACTIVE NAV LINK
     ================================================ */
-    var sections  = document.querySelectorAll('section[id]');
-    var navAnchors = document.querySelectorAll('.nav-link');
-
     function updateActiveLink(scrollY) {
         var y = (scrollY || window.pageYOffset) + 110;
         sections.forEach(function (sec) {
