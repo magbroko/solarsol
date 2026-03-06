@@ -140,22 +140,32 @@
     }
 
     /* ================================================
-       PROJECT FILTER
+       PROJECT FILTER — Bento grid / masonry-aware
     ================================================ */
     var filterBtns = document.querySelectorAll('.filter-btn');
     var projCards  = document.querySelectorAll('.proj-card');
+    var projBento  = document.querySelector('.proj-bento-grid');
+
+    function applyProjectFilter(filter) {
+        filterBtns.forEach(function (b) { b.classList.remove('active'); });
+        var activeBtn = document.querySelector('.filter-btn[data-filter="' + filter + '"]');
+        if (activeBtn) activeBtn.classList.add('active');
+
+        projCards.forEach(function (card) {
+            var match = filter === 'all' || card.getAttribute('data-category') === filter;
+            card.classList.toggle('proj-filtered', !match);
+            card.style.opacity       = match ? '1'       : '0.25';
+            card.style.transform     = match ? 'scale(1)' : 'scale(0.97)';
+            card.style.pointerEvents = match ? 'all'     : 'none';
+        });
+
+        if (projBento) projBento.classList.add('proj-filter-active');
+    }
 
     filterBtns.forEach(function (btn) {
         btn.addEventListener('click', function () {
             var filter = this.getAttribute('data-filter');
-            filterBtns.forEach(function (b) { b.classList.remove('active'); });
-            this.classList.add('active');
-            projCards.forEach(function (card) {
-                var match = filter === 'all' || card.getAttribute('data-category') === filter;
-                card.style.opacity       = match ? '1'       : '0.25';
-                card.style.transform     = match ? 'scale(1)' : 'scale(0.97)';
-                card.style.pointerEvents = match ? 'all'     : 'none';
-            });
+            applyProjectFilter(filter);
         });
     });
 

@@ -16,7 +16,7 @@
     <!-- AOS — Animate On Scroll CSS -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <!-- Brand custom styles (loads last → highest precedence) -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 
@@ -49,6 +49,11 @@
             <li><a href="#why-us"       class="nav-link">Why Us</a></li>
             <li><a href="#projects"     class="nav-link">Projects</a></li>
             <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+            <li><a href="#faq"          class="nav-link">FAQ</a></li>
+            <li><a href="#calculator"   class="nav-link">Calculator</a></li>
+     
+            
+            
             <!-- Shown only inside mobile slide-in panel -->
             <li class="nav-mob-cta">
                 <a href="#contact" class="nav-cta">Get Started</a>
@@ -75,7 +80,6 @@
 <div class="nav-backdrop" id="navBackdrop"></div>
 
 <!-- ========== HERO ========== -->
-<!-- Hero uses built-in CSS keyframe animations — no AOS needed above the fold -->
 <section class="hero" id="home">
 
     <!-- ── Background image + overlay ── -->
@@ -469,14 +473,16 @@
 <section class="projects section" id="projects">
     <div class="container">
 
-        <div class="section-intro"
+        <!-- Header: center-aligned, premium hierarchy -->
+        <div class="proj-intro text-center pb-5"
              data-aos="fade-up"
              data-aos-duration="700">
-            <span class="tag">Our Work</span>
-            <h2 class="heading">Featured <span class="accent">Installations</span></h2>
-            <p class="section-sub">A showcase of our premium solar installations across residential, commercial, and industrial sectors.</p>
+            <span class="proj-label">Our Work</span>
+            <h2 class="proj-heading">Featured <span class="proj-accent">Installations</span></h2>
+            <p class="proj-sub">A showcase of our premium solar installations across residential, commercial, and industrial sectors.</p>
         </div>
 
+        <!-- Filter pills: soft, --r-pill, --ease -->
         <div class="proj-filter d-flex justify-content-center flex-wrap gap-3 mb-5"
              data-aos="fade-up"
              data-aos-delay="100"
@@ -487,44 +493,121 @@
             <button class="filter-btn" data-filter="industrial">Industrial</button>
         </div>
 
-        <!-- Project cards zoom in with stagger -->
-        <div class="proj-grid">
-            <div class="proj-card" data-category="residential"
-                 data-aos="zoom-in" data-aos-duration="600" data-aos-delay="0">
-                <div class="proj-img"><img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=700&q=80" alt="Residential solar" loading="lazy">
-                    <div class="proj-info"><span class="proj-tag">Residential</span><h3>Lagos Luxury Home</h3><p>10kW rooftop system with battery backup</p></div>
+        <!-- Bento Box Grid: col-lg-7 dominant + col-lg-5 nest -->
+        <div class="proj-bento-grid row g-4">
+            <!-- Dominant vertical anchor (sunset/industrial) -->
+            <div class="col-12 col-lg-7 proj-bento-main"
+                 data-aos="fade-up" data-aos-duration="600" data-aos-delay="0">
+                <div class="proj-card proj-card-reveal" data-category="industrial">
+                    <div class="proj-card-inner">
+                        <div class="proj-container">
+                            <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=900&h=1200&q=85" alt="Dangote Cement solar installation at sunset, Lagos" loading="lazy">
+                            <div class="proj-overlay">
+                                <span class="proj-client">Dangote Cement, Lagos — Industrial</span>
+                                <span class="proj-metric">250 kWp System</span>
+                                <a href="#contact" class="proj-cta-link">View Project Case Study
+                                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="proj-card" data-category="commercial"
-                 data-aos="zoom-in" data-aos-duration="600" data-aos-delay="80">
-                <div class="proj-img"><img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=700&q=80" alt="Commercial solar" loading="lazy">
-                    <div class="proj-info"><span class="proj-tag">Commercial</span><h3>Corporate HQ Solar Farm</h3><p>50kW grid-tied system with monitoring</p></div>
+
+            <!-- Right column: horizontal panels nest -->
+            <div class="col-12 col-lg-5 proj-bento-secondary d-flex flex-column gap-4">
+                <div class="proj-card proj-card-reveal" data-category="commercial"
+                     data-aos="fade-up" data-aos-duration="600" data-aos-delay="80">
+                    <div class="proj-card-inner">
+                        <div class="proj-container">
+                            <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=800&h=500&q=85" alt="Corporate HQ aerial solar array, Abuja" loading="lazy">
+                            <div class="proj-overlay">
+                                <span class="proj-client">TechNexus HQ, Abuja — Commercial</span>
+                                <span class="proj-metric">50 kWp Grid-Tied</span>
+                                <a href="#contact" class="proj-cta-link">View Project Case Study
+                                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="proj-card proj-card-reveal" data-category="residential"
+                     data-aos="fade-up" data-aos-duration="600" data-aos-delay="120">
+                    <div class="proj-card-inner">
+                        <div class="proj-container">
+                            <img src="/assets/images/raze-solar-pIcseKMisrs-unsplash.jpg" alt="Lagos luxury home rooftop solar installation" loading="lazy">
+                            <div class="proj-overlay">
+                                <span class="proj-client">Lagos Luxury Home — Residential</span>
+                                <span class="proj-metric">10 kWp + Battery Backup</span>
+                                <a href="#contact" class="proj-cta-link">View Project Case Study
+                                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="proj-card proj-tall" data-category="industrial"
-                 data-aos="zoom-in" data-aos-duration="600" data-aos-delay="160">
-                <div class="proj-img"><img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=700&q=80" alt="Industrial solar" loading="lazy">
-                    <div class="proj-info"><span class="proj-tag">Industrial</span><h3>Manufacturing Solar Park</h3><p>200kW industrial ground-mount array</p></div>
+
+            <!-- Second row: three equal cards -->
+            <div class="col-12 col-md-6 col-lg-4"
+                 data-aos="fade-up" data-aos-duration="600" data-aos-delay="0">
+                <div class="proj-card proj-card-reveal" data-category="residential">
+                    <div class="proj-card-inner">
+                        <div class="proj-container">
+                            <img src="/assets/images/lekki.jpg" alt="Suburban estate solar system, Lekki" loading="lazy">
+                            <div class="proj-overlay">
+                                <span class="proj-client">Suburban Estate, Lekki — Residential</span>
+                                <span class="proj-metric">15 kWp Zero Grid Dependency</span>
+                                <a href="#contact" class="proj-cta-link">View Project Case Study
+                                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="proj-card" data-category="residential"
-                 data-aos="zoom-in" data-aos-duration="600" data-aos-delay="0">
-                <div class="proj-img"><img src="https://images.unsplash.com/photo-1548784174-5d3b768c0e59?auto=format&fit=crop&w=700&q=80" alt="Home solar" loading="lazy">
-                    <div class="proj-info"><span class="proj-tag">Residential</span><h3>Suburban Estate System</h3><p>15kW with Powerwall storage solution</p></div>
+            <div class="col-12 col-md-6 col-lg-4"
+                 data-aos="fade-up" data-aos-duration="600" data-aos-delay="80">
+                <div class="proj-card proj-card-reveal" data-category="commercial">
+                    <div class="proj-card-inner">
+                        <div class="proj-container">
+                            <img src="https://images.unsplash.com/photo-1592833159155-c62df1b65634?auto=format&fit=crop&w=700&h=500&q=85" alt="Shopping mall solar canopy, Abuja" loading="lazy">
+                            <div class="proj-overlay">
+                                <span class="proj-client">Mall Solar Canopy, Abuja — Commercial</span>
+                                <span class="proj-metric">75 kWp Carport Array</span>
+                                <a href="#contact" class="proj-cta-link">View Project Case Study
+                                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="proj-card proj-wide" data-category="commercial"
-                 data-aos="zoom-in" data-aos-duration="600" data-aos-delay="80">
-                <div class="proj-img"><img src="https://images.unsplash.com/photo-1592833159155-c62df1b65634?auto=format&fit=crop&w=1000&q=80" alt="Mall solar canopy" loading="lazy">
-                    <div class="proj-info"><span class="proj-tag">Commercial</span><h3>Shopping Mall Solar Canopy</h3><p>75kW carport solar array — Abuja</p></div>
+            <div class="col-12 col-md-6 col-lg-4"
+                 data-aos="fade-up" data-aos-duration="600" data-aos-delay="160">
+                <div class="proj-card proj-card-reveal" data-category="industrial">
+                    <div class="proj-card-inner">
+                        <div class="proj-container">
+                            <img src="https://images.unsplash.com/photo-1526397751294-331021109fbd?auto=format&fit=crop&w=700&h=500&q=85" alt="Warehouse rooftop solar array, Port Harcourt" loading="lazy">
+                            <div class="proj-overlay">
+                                <span class="proj-client">Warehouse Rooftop, PH — Industrial</span>
+                                <span class="proj-metric">100 kWp Flat-Roof System</span>
+                                <a href="#contact" class="proj-cta-link">View Project Case Study
+                                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="proj-card" data-category="industrial"
-                 data-aos="zoom-in" data-aos-duration="600" data-aos-delay="160">
-                <div class="proj-img"><img src="https://images.unsplash.com/photo-1526397751294-331021109fbd?auto=format&fit=crop&w=700&q=80" alt="Warehouse solar" loading="lazy">
-                    <div class="proj-info"><span class="proj-tag">Industrial</span><h3>Warehouse Rooftop Array</h3><p>100kW flat-roof system — Port Harcourt</p></div>
-                </div>
-            </div>
+        </div>
+
+        <!-- Lead capture: Ghost CTA -->
+        <div class="proj-cta-wrap text-center pt-5"
+             data-aos="fade-up"
+             data-aos-delay="200"
+             data-aos-duration="600">
+            <a href="#contact" class="proj-ghost-cta">Explore All Projects (20+)</a>
         </div>
     </div>
 </section>
@@ -583,6 +666,412 @@
         </div>
     </div>
 </section>
+
+<!-- ========== FAQ ========== -->
+<section class="faq section" id="faq">
+    <div class="faq-container">
+        <div class="faq-intro text-center mb-5"
+             data-aos="fade-up"
+             data-aos-duration="700">
+            <span class="tag">Got Questions?</span>
+            <h2 class="heading">Frequently Asked <span class="accent">Questions</span></h2>
+            <p class="section-sub">Everything you need to know about solar in Nigeria — rainy season, AC loads, Band A billing, and more.</p>
+        </div>
+
+        <div class="accordion faq-accordion" id="faqAccordion">
+            <div class="accordion-item faq-item"
+                 data-aos="fade-up"
+                 data-aos-duration="600"
+                 data-aos-delay="0">
+                <h2 class="accordion-header">
+                    <button class="accordion-button faq-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
+                        <span class="faq-num">01</span>
+                        Does solar work during the rainy season in Nigeria?
+                    </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body faq-body">
+                        Yes. Solar panels still generate power on cloudy and rainy days — typically 15–25% of peak output. Our systems are sized for Nigeria's average 5.5 peak sun hours, and we factor in seasonal variation. Battery storage ensures you have power through extended cloudy periods and at night.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item faq-item"
+                 data-aos="fade-up"
+                 data-aos-duration="600"
+                 data-aos-delay="80">
+                <h2 class="accordion-header">
+                    <button class="accordion-button faq-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                        <span class="faq-num">02</span>
+                        Can I power my AC and pumping machine with these systems?
+                    </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body faq-body">
+                        Absolutely. We size systems for surge loads (pumps and fridges have high startup currents) and continuous loads like ACs. Our ROI calculator lets you select priority appliances — we recommend a minimum 3.5KVA inverter if you run a pumping machine. Hybrid systems can run ACs, pumps, and essential loads with battery backup.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item faq-item"
+                 data-aos="fade-up"
+                 data-aos-duration="600"
+                 data-aos-delay="160">
+                <h2 class="accordion-header">
+                    <button class="accordion-button faq-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                        <span class="faq-num">03</span>
+                        What is the difference between Band A Disco billing and Solar ROI?
+                    </button>
+                </h2>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body faq-body">
+                        Band A is the highest electricity tariff tier (≈₦225/kWh) with up to 20 hours of supply. Solar ROI compares your current Disco spend (including Band A/B/C rates) against the upfront cost of a solar system. Our calculator factors in Band A tariffs, generator fuel savings, and payback — so you see how quickly solar pays for itself.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item faq-item"
+                 data-aos="fade-up"
+                 data-aos-duration="600"
+                 data-aos-delay="240">
+                <h2 class="accordion-header">
+                    <button class="accordion-button faq-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                        <span class="faq-num">04</span>
+                        Do you offer maintenance services in Lagos and Abuja?
+                    </button>
+                </h2>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body faq-body">
+                        Yes. We provide maintenance and repair services across Lagos, Abuja, and major Nigerian cities. Our team offers routine inspections, panel cleaning, inverter checks, and rapid response for faults. Contact us to schedule a visit or discuss an annual maintenance package.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== SOLAR ROI CALCULATOR (Nigeria) ========== -->
+<section class="roi-calculator section" id="calculator">
+    <div class="container">
+        <div class="section-intro" data-aos="fade-up" data-aos-duration="700">
+            <span class="tag">Solar Savings</span>
+            <h2 class="heading">Solar <span class="accent">ROI Calculator</span></h2>
+            <p class="section-sub">Estimate your solar investment in Naira. Built for the Nigerian market — Disco bills, generator savings, and Band A tariffs.</p>
+        </div>
+
+        <div class="roi-wrapper roi-glass" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+            <!-- Progress Bar with Step Icons -->
+            <div class="roi-progress-wrap">
+                <div class="roi-progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <div class="roi-progress-fill" id="roiProgressFill" style="width: 25%"></div>
+                </div>
+                <div class="roi-step-icons d-flex justify-content-between mt-3">
+                    <div class="roi-step-icon active" data-step="1"><span class="roi-step-num">1</span><span>Location</span></div>
+                    <div class="roi-step-icon" data-step="2"><span class="roi-step-num">2</span><span>Bill</span></div>
+                    <div class="roi-step-icon" data-step="3"><span class="roi-step-num">3</span><span>Profile</span></div>
+                    <div class="roi-step-icon" data-step="4"><span class="roi-step-num">4</span><span>Results</span></div>
+                </div>
+            </div>
+
+            <!-- Multi-Step Form -->
+            <div class="roi-form-container">
+                <div id="roiValidationAlert" class="alert alert-warning alert-dismissible fade d-none" role="alert"></div>
+                <!-- Step 1: Location -->
+                <div class="roi-step active" id="roiStep1" data-step="1">
+                    <div class="roi-step-inner">
+                        <h3 class="roi-step-title">Where is your property?</h3>
+                        <p class="roi-step-desc">We use location to estimate peak sun hours (Lagos, Abuja, PH have ~5.5 hrs).</p>
+                        <div class="row g-4 mt-2">
+                            <div class="col-12">
+                                <label for="roiLocation" class="form-label">City / Area</label>
+                                <input type="text" class="form-control roi-input" id="roiLocation" name="location" placeholder="e.g. Lagos, Abuja, Port Harcourt, Ibadan..." list="ngCities" autocomplete="off">
+                                <datalist id="ngCities">
+                                    <option value="Lagos">Lagos</option>
+                                    <option value="Abuja">Abuja</option>
+                                    <option value="Port Harcourt">Port Harcourt</option>
+                                    <option value="Ibadan">Ibadan</option>
+                                    <option value="Kano">Kano</option>
+                                    <option value="Benin City">Benin City</option>
+                                    <option value="Enugu">Enugu</option>
+                                    <option value="Kaduna">Kaduna</option>
+                                    <option value="Warri">Warri</option>
+                                    <option value="Calabar">Calabar</option>
+                                    <option value="Uyo">Uyo</option>
+                                    <option value="Abeokuta">Abeokuta</option>
+                                    <option value="Ilorin">Ilorin</option>
+                                    <option value="Jos">Jos</option>
+                                    <option value="Onitsha">Onitsha</option>
+                                </datalist>
+                                <small class="text-muted">Lagos, Abuja, PH ≈ 5.5 peak sun hrs</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Monthly Bill Slider -->
+                <div class="roi-step d-none" id="roiStep2" data-step="2">
+                    <div class="roi-step-inner">
+                        <h3 class="roi-step-title">Monthly Disco / Energy Bill</h3>
+                        <p class="roi-step-desc">Your average monthly electricity spend (₦). Includes Band A/B/C tariffs.</p>
+                        <div class="row g-4 mt-2">
+                            <div class="col-12">
+                                <label class="form-label d-flex justify-content-between">
+                                    <span>Monthly Bill</span>
+                                    <span class="roi-slider-value" id="roiBillDisplay">₦100,000</span>
+                                </label>
+                                <input type="range" class="form-range roi-slider" id="roiMonthlyBill" name="monthlyBill" min="20000" max="550000" step="5000" value="100000">
+                                <div class="d-flex justify-content-between mt-1">
+                                    <small class="text-muted">₦20,000</small>
+                                    <small class="text-muted">₦500,000+</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="roi-live-preview mt-4" id="roiLivePreview2">
+                            <span class="roi-preview-label">Est. monthly kWh:</span>
+                            <span class="roi-preview-value" id="roiKwhPreview">—</span>
+                            <span class="roi-preview-label ms-3">System size:</span>
+                            <span class="roi-preview-value" id="roiSystemPreview">—</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Energy Profile -->
+                <div class="roi-step d-none" id="roiStep3" data-step="3">
+                    <div class="roi-step-inner">
+                        <h3 class="roi-step-title">Energy profile</h3>
+                        <p class="roi-step-desc">Helps us factor in generator/inverter backup needs.</p>
+                        <div class="row g-4 mt-2">
+                            <div class="col-md-6">
+                                <label class="form-label">Number of Bedrooms</label>
+                                <div class="roi-toggle-group" role="group">
+                                    <input type="radio" class="btn-check" name="bedrooms" id="bed1" value="1" autocomplete="off">
+                                    <label class="btn btn-outline-success roi-toggle-btn" for="bed1">1</label>
+                                    <input type="radio" class="btn-check" name="bedrooms" id="bed2" value="2" autocomplete="off">
+                                    <label class="btn btn-outline-success roi-toggle-btn" for="bed2">2</label>
+                                    <input type="radio" class="btn-check" name="bedrooms" id="bed3" value="3" autocomplete="off" checked>
+                                    <label class="btn btn-outline-success roi-toggle-btn" for="bed3">3</label>
+                                    <input type="radio" class="btn-check" name="bedrooms" id="bed4" value="4" autocomplete="off">
+                                    <label class="btn btn-outline-success roi-toggle-btn" for="bed4">4</label>
+                                    <input type="radio" class="btn-check" name="bedrooms" id="bed5" value="5" autocomplete="off">
+                                    <label class="btn btn-outline-success roi-toggle-btn" for="bed5">5+</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Hours of Grid Availability (daily)</label>
+                                <div class="roi-toggle-group" role="group">
+                                    <input type="radio" class="btn-check" name="gridHours" id="grid4" value="4" autocomplete="off">
+                                    <label class="btn btn-outline-success roi-toggle-btn" for="grid4">4h</label>
+                                    <input type="radio" class="btn-check" name="gridHours" id="grid8" value="8" autocomplete="off">
+                                    <label class="btn btn-outline-success roi-toggle-btn" for="grid8">8h</label>
+                                    <input type="radio" class="btn-check" name="gridHours" id="grid12" value="12" autocomplete="off" checked>
+                                    <label class="btn btn-outline-success roi-toggle-btn" for="grid12">12h</label>
+                                    <input type="radio" class="btn-check" name="gridHours" id="grid18" value="18" autocomplete="off">
+                                    <label class="btn btn-outline-success roi-toggle-btn" for="grid18">18h</label>
+                                    <input type="radio" class="btn-check" name="gridHours" id="grid24" value="24" autocomplete="off">
+                                    <label class="btn btn-outline-success roi-toggle-btn" for="grid24">24h</label>
+                                </div>
+                                <small class="text-muted">Less grid = more generator fuel savings</small>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Priority Load <span class="badge bg-success">Refines Inverter</span></label>
+                                <p class="roi-step-desc mb-2">Select appliances that must run. Water pumps &amp; fridges have <strong>surge power</strong> — we size for startup.</p>
+                                <div class="roi-priority-loads">
+                                    <div class="form-check form-check-inline roi-load-check">
+                                        <input class="form-check-input" type="checkbox" name="priorityFridge" id="loadFridge" value="1">
+                                        <label class="form-check-label" for="loadFridge">Fridge/Freezer</label>
+                                    </div>
+                                    <div class="form-check form-check-inline roi-load-check">
+                                        <input class="form-check-input" type="checkbox" name="priorityAC" id="loadAC" value="1">
+                                        <label class="form-check-label" for="loadAC">Air Conditioner</label>
+                                    </div>
+                                    <div class="form-check form-check-inline roi-load-check">
+                                        <input class="form-check-input" type="checkbox" name="priorityPump" id="loadPump" value="1">
+                                        <label class="form-check-label" for="loadPump">Pumping Machine</label>
+                                    </div>
+                                </div>
+                                <small class="text-muted">Pump selected → min 3.5KVA inverter (surge)</small>
+                            </div>
+                        </div>
+                        <div class="roi-live-preview mt-4" id="roiLivePreview3">
+                            <span class="roi-preview-label">Panels needed:</span>
+                            <span class="roi-preview-value" id="roiPanelsPreview">—</span>
+                            <span class="roi-preview-label ms-3">Battery backup:</span>
+                            <span class="roi-preview-value" id="roiBatteryPreview">—</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Bento-Grid Dashboard -->
+                <div class="roi-step d-none" id="roiStep4" data-step="4">
+                    <div class="roi-dashboard">
+                        <h3 class="roi-dashboard-title">Your Solar ROI Overview</h3>
+
+                        <!-- Hardware Recommendation Card -->
+                        <div class="roi-hardware-card card border-0 shadow-sm mb-4">
+                            <div class="card-body p-4">
+                                <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+                                    <h4 class="card-title mb-0">Your Ideal Setup</h4>
+                                    <span class="badge roi-hardware-system-label fs-6 px-3 py-2" id="roiHardwareSystemLabel">—KVA Hybrid</span>
+                                </div>
+                                <p class="text-muted small mb-3">Components sized for your priority loads and backup needs.</p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-2">
+                                        <span id="roiHardwarePanels">—</span>
+                                        <span class="badge bg-light text-dark">550W Mono-PERC</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-2">
+                                        <span id="roiHardwareBattery">—</span>
+                                        <span class="badge bg-light text-dark" id="roiHardwareBatteryBadge">Deep Cycle</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-2">
+                                        <span id="roiHardwareLithium">—</span>
+                                        <span class="badge bg-primary">Lithium Option</span>
+                                    </li>
+                                </ul>
+                                <div class="mt-3 pt-3 border-top">
+                                    <span class="roi-why-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" title="" id="roiWhyTooltip">
+                                        <svg class="me-1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                                        Why this size?
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Generator vs Solar Comparison -->
+                        <div class="roi-comparison-card card border-0 mb-4">
+                            <div class="card-body p-4">
+                                <h5 class="card-title mb-3">Generator vs Solar</h5>
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <div class="roi-comp-stat">
+                                            <span class="roi-comp-value" id="roiLitersPerMonth">—</span>
+                                            <span class="roi-comp-label">Liters saved/month</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="roi-comp-stat">
+                                            <span class="roi-comp-value" id="roiFuelCostMonth">—</span>
+                                            <span class="roi-comp-label">Fuel cost avoided (₦1,100/L)</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="roi-comp-stat">
+                                            <span class="roi-comp-value" id="roiAnnualFuelSave">—</span>
+                                            <span class="roi-comp-label">Annual fuel savings</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bento Grid Stats -->
+                        <div class="roi-bento-grid">
+                            <div class="roi-bento-card roi-bento-system">
+                                <div class="roi-bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+                                <span class="roi-bento-value" id="roiSystemKw">—</span>
+                                <span class="roi-bento-label">System Size (kW)</span>
+                            </div>
+                            <div class="roi-bento-card roi-bento-panels">
+                                <div class="roi-bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/></svg></div>
+                                <span class="roi-bento-value" id="roiPanelsCount">—</span>
+                                <span class="roi-bento-label">550W Panels</span>
+                            </div>
+                            <div class="roi-bento-card roi-bento-payback roi-bento-savings">
+                                <div class="roi-bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                                <span class="roi-bento-value" id="roiPaybackYears">—</span>
+                                <span class="roi-bento-label">Payback (years)</span>
+                            </div>
+                            <div class="roi-bento-card roi-bento-generator roi-bento-savings">
+                                <div class="roi-bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c6-3.5 8-9 8-14 0 0-4-1-8 3-4-4-8-3-8-3 0 5 2 10.5 8 14z"/></svg></div>
+                                <span class="roi-bento-value" id="roiLitersSaved">—</span>
+                                <span class="roi-bento-label">Generator Liters Saved/yr</span>
+                            </div>
+                            <div class="roi-bento-card roi-bento-trees">
+                                <div class="roi-bento-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22v-4M12 18a4 4 0 0 0 4-4c0-3-2-4-4-6-2 2-4 3-4 6a4 4 0 0 0 4 4z"/><path d="M12 2v4M12 6a4 4 0 0 1 4 4c0 3-2 4-4 6-2-2-4-3-4-6a4 4 0 0 1 4-4z"/></svg></div>
+                                <span class="roi-bento-value" id="roiTreesEquivalent">—</span>
+                                <span class="roi-bento-label">Trees Equivalent</span>
+                            </div>
+                        </div>
+
+                        <!-- Charts -->
+                        <div class="row g-4 mb-4">
+                            <div class="col-lg-6">
+                                <div class="roi-chart-card">
+                                    <h4 class="roi-chart-title">Disco Bill vs Solar Savings (12 Months)</h4>
+                                    <div class="roi-chart-wrap"><canvas id="roiBarChart" height="260"></canvas></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="roi-chart-card">
+                                    <h4 class="roi-chart-title">ROI Timeline — Break-even vs Grid Cost</h4>
+                                    <div class="roi-chart-wrap"><canvas id="roiLineChart" height="260"></canvas></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Get Custom Quote CTA -->
+                        <div class="roi-quote-cta text-center">
+                            <p class="roi-quote-note mb-3">Includes ₦50,000–₦150,000/mo generator fuel savings in total ROI.</p>
+                            <button type="button" class="btn btn-success btn-lg" id="roiQuoteBtn" data-bs-toggle="modal" data-bs-target="#roiQuoteModal">
+                                Get Custom Quote
+                                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nav Buttons -->
+            <div class="roi-nav-btns d-flex justify-content-between align-items-center mt-4">
+                <button type="button" class="btn btn-outline-success roi-btn-prev" id="roiBtnPrev" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                    Previous
+                </button>
+                <button type="button" class="btn btn-success roi-btn-next" id="roiBtnNext">
+                    Next
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quote Modal -->
+<div class="modal fade" id="roiQuoteModal" tabindex="-1" aria-labelledby="roiQuoteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content roi-modal-content">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title" id="roiQuoteModalLabel">Get Your Custom Quote</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="roiQuoteForm">
+                    <input type="hidden" name="calc_systemSizeKw" id="quoteSystemSizeKw" value="">
+                    <input type="hidden" name="calc_inverterKva" id="quoteInverterKva" value="">
+                    <input type="hidden" name="calc_panels" id="quotePanels" value="">
+                    <input type="hidden" name="calc_monthlyBill" id="quoteMonthlyBill" value="">
+                    <input type="hidden" name="calc_location" id="quoteLocation" value="">
+                    <div class="mb-3">
+                        <label for="quoteName" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="quoteName" name="name" placeholder="e.g. Adebayo Okafor" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="quoteEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="quoteEmail" name="email" placeholder="adebayo@example.com" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="quotePhone" class="form-label">Phone</label>
+                        <input type="tel" class="form-control" id="quotePhone" name="phone" placeholder="+234 800 000 0000">
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">
+                        Request Custom Quote
+                        <svg viewBox="0 0 20 20" fill="currentColor" style="width:18px;height:18px"><path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- ========== CONTACT ========== -->
 <section class="contact section" id="contact">
@@ -730,7 +1219,7 @@
                  data-aos="fade-up" data-aos-duration="700" data-aos-delay="300">
                 <h4>Resources</h4>
                 <ul>
-                    <li><a href="#">Solar Calculator</a></li>
+                    <li><a href="#calculator">Solar Calculator</a></li>
                     <li><a href="#">Installation Guide</a></li>
                     <li><a href="#">FAQ</a></li>
                     <li><a href="#">Warranty Policy</a></li>
@@ -758,6 +1247,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- AOS — Animate On Scroll JS -->
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script src="script.js"></script>
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="assets/js/calcEngine.js"></script>
+<script src="assets/js/script.js"></script>
+<script src="assets/js/app.js"></script>
 </body>
 </html>
